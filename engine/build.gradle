@@ -1,5 +1,6 @@
 apply plugin: "org.jetbrains.kotlin.jvm"
 apply plugin: "com.adarshr.test-logger"
+apply plugin: "info.solidsoft.pitest"
 
 
 dependencies {
@@ -15,6 +16,23 @@ test {
 
 testlogger {
     theme 'mocha'
+}
+
+pitest {
+    pitestVersion = "$pitestVersion"
+    testPlugin = 'junit5'
+    timestampedReports = false
+    threads = 4
+    outputFormats = ['HTML']
+    //like NEW_DEFAULTS but without the ridiculous return value mutators
+    mutators = [
+            'INVERT_NEGS',
+            'MATH',
+            'VOID_METHOD_CALLS',
+            'NEGATE_CONDITIONALS',
+            'CONDITIONALS_BOUNDARY',
+            'INCREMENTS',
+    ]
 }
 
 compileKotlin {

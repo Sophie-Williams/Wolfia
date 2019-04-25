@@ -6,8 +6,7 @@ apply plugin: "info.solidsoft.pitest"
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit5:$kotlinVersion"
-    testRuntime "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
-
+    testImplementation "org.junit.jupiter:junit-jupiter:$junitVersion"
 }
 
 test {

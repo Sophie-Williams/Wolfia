@@ -1,3 +1,5 @@
+import info.solidsoft.gradle.pitest.PitestTask
+
 apply plugin: "org.jetbrains.kotlin.jvm"
 apply plugin: "com.adarshr.test-logger"
 apply plugin: "info.solidsoft.pitest"
@@ -32,6 +34,14 @@ pitest {
             'CONDITIONALS_BOUNDARY',
             'INCREMENTS',
     ]
+}
+
+tasks.withType(PitestTask) {
+    doLast {
+        exec {
+            commandLine 'open', 'build/reports/pitest/index.html'
+        }
+    }
 }
 
 compileKotlin {
